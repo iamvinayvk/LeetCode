@@ -11,22 +11,24 @@ public:
         }
         vector<string> ans{""};
         for(auto digit:digits){
-            vector<string> temp=ans;
-            for(auto tem:temp){
+            vector<string> temp;
+            for(auto tem:ans){
                 // cout<<"gaya\n";
                 for(auto map:mapping[digit-'0']){
                     // cout<<"gaya\n";
-                ans.push_back(tem+map);
+                temp.push_back(tem+map);
             }
+                
             }
+            ans=move(temp);
             
         }
-        vector<string> realAns;
-        for(int i=0;i<ans.size();i++){
-            if(ans[i].size()==digits.size())
-                realAns.push_back(ans[i]);
-        }
+        // vector<string> realAns;
+        // for(int i=0;i<ans.size();i++){
+        //     if(ans[i].size()==digits.size())
+        //         realAns.push_back(ans[i]);
+        // }
         
-        return realAns;
+        return ans;
     }
 };
