@@ -1,53 +1,50 @@
 class Solution {
 public:
     int evalRPN(vector<string>& tokens) {
-        stack<string> st;
+        stack<int> st;
         int ans;
         for(int i=0;i<tokens.size();i++){
-            st.push(tokens[i]);
-            if(st.top()=="/"){
+            if(tokens[i]!="/"&&tokens[i]!="*"&&tokens[i]!="+"&&tokens[i]!="-")
+            st.push(stoi(tokens[i]));
+            if(tokens[i]=="/"){
+                int val1=st.top();
                 st.pop();
-                int val1=stoi(st.top());
-                st.pop();
-                int val2=stoi(st.top());
+                int val2=st.top();
                 st.pop();
                 ans=val2/val1;
-                st.push(to_string(ans));
+                st.push(ans);
                 
                 
             }
-            else if(st.top()=="*"){
+            else if(tokens[i]=="*"){
+                int val1=st.top();
                 st.pop();
-                int val1=stoi(st.top());
-                st.pop();
-                int val2=stoi(st.top());
+                int val2=st.top();
                 st.pop();
                 ans=val2*val1;
-                st.push(to_string(ans));
+                st.push(ans);
                 
             }
-            else if(st.top()=="+"){
+            else if(tokens[i]=="+"){
+                int val1=st.top();
                 st.pop();
-                int val1=stoi(st.top());
-                st.pop();
-                int val2=stoi(st.top());
+                int val2=st.top();
                 st.pop();
                 ans=val2+val1;
-                st.push(to_string(ans));
+                st.push(ans);
                 
             }
-            else if(st.top()=="-"){
+            else if(tokens[i]=="-"){
+                int val1=st.top();
                 st.pop();
-                int val1=stoi(st.top());
-                st.pop();
-                int val2=stoi(st.top());
+                int val2=st.top();
                 st.pop();
                 ans=val2-val1;
-                st.push(to_string(ans));
+                st.push(ans);
                 
             }
         }
-        ans=stoi(st.top());
+        ans=st.top();
         return ans;
     }
 };
