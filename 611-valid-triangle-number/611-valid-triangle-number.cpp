@@ -6,8 +6,10 @@ public:
         if(nums.size()<3)
             return 0;
         for(int i=0;i<nums.size();i++){
+            int k=i+2;
             for(int j=i+1;j<nums.size();j++){
-                auto k=lower_bound(nums.begin(),nums.end(),nums[i]+nums[j])-nums.begin();
+                while(k<nums.size()&&nums[i]+nums[j]>nums[k])
+                    k++;
                 if(k>=j+1)
                 count+=(k-j-1);
             }
