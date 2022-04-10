@@ -1,26 +1,34 @@
 class Solution {
 public:
     int calPoints(vector<string>& ops) {
-        vector<int> nums;
+        stack<int> nums;
         for(int i=0;i<ops.size();i++){
             if(ops[i]=="+"){
                 int ans=0;
-                ans=nums[nums.size()-1]+nums[nums.size()-2];
+                ans+=nums.top();
+                // nums.pop();
+                int store=nums.top();
+                nums.pop();
+                ans+=nums.top();
+                int store2=nums.top();
+                nums.push(store);
+                // nums.pop();
                 // nums.clear();
-                nums.push_back(ans);
+                nums.push(ans);
             }
             else if(ops[i]=="C"){
-                nums.erase(nums.end()-1);
+                nums.pop();
             }
             else if(ops[i]=="D"){
                 int ans=0;
-                int val=nums[nums.size()-1];
+                int val=nums.top();
                 ans=2*val;
+                // nums.pop();
                 // nums.erase(nums.end()-1);
-                nums.push_back(ans);
+                nums.push(ans);
             }
             else{
-                nums.push_back(stoi(ops[i]));
+                nums.push(stoi(ops[i]));
             }
             // for(auto x: nums){
             //     cout<<x<<" ";
@@ -28,8 +36,9 @@ public:
             // cout<<"\n";
         }
         int ans=0;
-        for(int i=0;i<nums.size();i++){
-            ans+=nums[i];
+        while(!nums.empty()){
+            ans+=nums.top();
+            nums.pop();
         }
         return ans;
     }
