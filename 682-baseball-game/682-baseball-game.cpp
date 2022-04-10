@@ -6,14 +6,11 @@ public:
             if(ops[i]=="+"){
                 int ans=0;
                 ans+=nums.top();
-                // nums.pop();
                 int store=nums.top();
                 nums.pop();
                 ans+=nums.top();
                 int store2=nums.top();
                 nums.push(store);
-                // nums.pop();
-                // nums.clear();
                 nums.push(ans);
             }
             else if(ops[i]=="C"){
@@ -23,17 +20,11 @@ public:
                 int ans=0;
                 int val=nums.top();
                 ans=2*val;
-                // nums.pop();
-                // nums.erase(nums.end()-1);
                 nums.push(ans);
             }
             else{
                 nums.push(stoi(ops[i]));
             }
-            // for(auto x: nums){
-            //     cout<<x<<" ";
-            // }
-            // cout<<"\n";
         }
         int ans=0;
         while(!nums.empty()){
