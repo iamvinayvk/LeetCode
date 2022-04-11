@@ -10,6 +10,8 @@ public:
                 ans[((i+(j+k)/n)%m)][(j+k)%n]=grid[i][j];
             }
         }
+        //(i+(j+k)/n)%m is used to decide to the row j+k shifts determine the column and diving it by n gives the row and overflow is controlled by %m
+        //(j+k)%n is dtermins the column of the new grid
         return ans;
         
         
