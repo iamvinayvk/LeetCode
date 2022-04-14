@@ -29,12 +29,12 @@ public:
                 return root->left?root->left:root->right;
             }
             else{
-                TreeNode* temp=root->left;
-                while(temp->right!=NULL){
-                    temp=temp->right;
+                TreeNode* temp=root->right;
+                while(temp->left!=NULL){
+                    temp=temp->left;
                 }
                 root->val=temp->val;
-                root->left=deleteNode(root->left,temp->val);
+                root->right=deleteNode(root->right,temp->val);
             }
             
         }
