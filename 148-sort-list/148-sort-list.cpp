@@ -25,25 +25,30 @@ public:
             return head;
         }
         
-//         ListNode* fast = head;
-//         ListNode* slow = head;
-//         // ListNode* temp = NULL;
+        ListNode* fast = head;
+        ListNode* slow = head;
+        ListNode* temp = NULL;
         
-//         while(fast and fast->next){
-//             // temp = slow;
-//             slow = (slow==NULL)?fast:slow->next;
-//             fast = fast->next->next;
+        while(fast and fast->next){
+            temp = slow;
+            slow = slow->next;
+            fast = fast->next->next;
             
-//         }
+        }
+        temp->next=NULL;
         // temp = slow;
         // slow->next = NULL;
-        ListNode* mid=getMid(head);
+        // cout<<"before: "<<head->val<<"\n";
+        // ListNode* mid=getMid(head);
+        // cout<<"before1: "<<head->val<<"\n";
+        // ListNode* list1 = sortList(head);
+        // cout<<"before2: "<<head->val<<"\n";
+        // ListNode* list2 = sortList(mid);
+        // slow->next = NULL;
+        // slow->next = NULL;
         ListNode* list1 = sortList(head);
-        ListNode* list2 = sortList(mid);
-        // slow->next = NULL;
-        // ListNode* list1 = sortList(fast);
-        // ListNode* list2 = sortList(slow->next);
-        // slow->next = NULL;
+        ListNode* list2 = sortList(slow);
+        
         
         return mergeList(list1, list2);
     }
