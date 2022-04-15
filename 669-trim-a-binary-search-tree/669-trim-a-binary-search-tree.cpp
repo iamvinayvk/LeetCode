@@ -11,19 +11,37 @@
  */
 class Solution {
 public:
-    TreeNode* trimBST(TreeNode* root, int low, int high) {
-        if(root==NULL){
+     TreeNode* trimBST(TreeNode* root, int low, int high) {
+        if(root == NULL){
             return root;
         }
-        if(root->val>high){
-            return trimBST(root->left,low,high);
-        }
-        if(root->val<low){
-            return trimBST(root->right,low,high);
-        }
-        root->left=trimBST(root->left,low,high);
-        root->right=trimBST(root->right,low,high);
-        return root;
         
+        while(root!=NULL&&(root->val < low || root->val > high)){
+            if(root->val < low){
+                root = root->right;
+            }
+            else if(root->val > high){
+                root = root->left;
+            }
+        }
+        
+        TreeNode* temp = root;
+        
+        while(temp != NULL){
+            while(temp->left != NULL and temp->left->val < low){
+                temp->left = temp->left->right;
+            }
+            temp = temp->left;
+        }
+        temp = root;
+        
+        while(temp != NULL){
+            while(temp->right != NULL and temp->right->val > high){
+                temp->right = temp->right->left;
+            }
+            temp = temp->right;
+        }
+        
+        return root;
     }
 };
