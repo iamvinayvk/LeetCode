@@ -4,8 +4,8 @@ public:
         if(total<cost1&&total<cost2){
             return 1;
         }
-        int pen=0,pencil=0;
-        int penT=total;
+        // int pen=0,pencil=0;
+        // int penT=total;
         long long ans=0;
       
             // ans+=total%cost1==0?1:0;
@@ -22,7 +22,7 @@ public:
             }
         
         
-        total=penT;
+        // total=penT;
         
         return ans;
         
