@@ -13,7 +13,7 @@ public:
        // for(auto x:nums){
        //     cout<<x<<" ";
        // }
-       cout<<"\n";
+       // cout<<"\n";
        return i-1;
    }
     int findKthLargest(vector<int>& nums, int k) {
