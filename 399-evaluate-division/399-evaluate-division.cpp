@@ -2,18 +2,15 @@ class Solution {
 public:
 void dfs(string start,string end,map<string,double>& mp,map<string,vector<string>>& graph,double& val,map<string,int>& visited,bool& found){
         visited[start]=1;
-    if(start==end){
-        found=true;
-        return ;
-    }
+    
         if(found==true)
             return ;
         for(auto child:graph[start]){
             if(visited[child]!=1){
-                cout<<start<<" "<<child<<"\n";
+                // cout<<start<<" "<<child<<"\n";
                 val*=mp[start+"->"+child];
                 if(end==child){
-                    cout<<end<<" -- "<<child<<"\n";
+                    // cout<<end<<" -- "<<child<<"\n";
                     found=true;
                     return ;
                 }
@@ -52,6 +49,10 @@ void dfs(string start,string end,map<string,double>& mp,map<string,vector<string
                 double val=1;
                 map<string,int> visited;
                 bool found=false;
+                if(start==end){
+                    found=true;
+                }
+                else
                 dfs(start,end,mp,graph,val,visited,found);
                 if(found==true)
                 ans.push_back(val);
