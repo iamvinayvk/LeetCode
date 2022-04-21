@@ -7,10 +7,10 @@ void dfs(string start,string end,map<string,double>& mp,map<string,vector<string
             return ;
         for(auto child:graph[start]){
             if(visited[child]!=1){
-                // cout<<start<<" "<<child<<"\n";
+                cout<<start<<" "<<child<<" "<<val<<"\n";
                 val*=mp[start+"->"+child];
                 if(end==child){
-                    // cout<<end<<" -- "<<child<<"\n";
+                    cout<<end<<" -- "<<child<<" "<<val<<"\n";
                     found=true;
                     return ;
                 }
