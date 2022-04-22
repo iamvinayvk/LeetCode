@@ -9,20 +9,20 @@ using namespace std;
 
 class Solution{   
 public:
-bool subset(vector<int>& arr,int currIndex,int lastIndex,int targetSum,vector<vector<int>>& dp){
+bool subset(vector<int>& arr,int currIndex,int lastIndex,int targetSum,vector<int>& dp){
     if(targetSum<0)
     return false;
     if(targetSum==0)
     return true;
     if(currIndex>lastIndex)
     return false;
-    if(dp[currIndex][targetSum]!=-1)
-    return dp[currIndex][targetSum];
-    return dp[currIndex][targetSum]=(subset(arr,currIndex+1,lastIndex,targetSum-arr[currIndex],dp)||subset(arr,currIndex+1,lastIndex,targetSum,dp));
+    if(dp[targetSum]!=-1)
+    return dp[targetSum];
+    return dp[targetSum]=(subset(arr,currIndex+1,lastIndex,targetSum-arr[currIndex],dp)||subset(arr,currIndex+1,lastIndex,targetSum,dp));
 }
     bool isSubsetSum(vector<int>arr, int sum){
         // code here 
-        vector<vector<int>> dp(arr.size(),vector<int>(sum+5,-1));
+        vector<int> dp(sum+5,-1);
         return subset(arr,0,arr.size()-1,sum,dp);
     }
 };
