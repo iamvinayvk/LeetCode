@@ -5,12 +5,12 @@ public:
             return 0;
         }
         visited[r][c]=1;
-        int a=findAns(grid,n,m,r+1,c,visited);
-        int b=findAns(grid,n,m,r,c+1,visited);
-        int cc=findAns(grid,n,m,r-1,c,visited);
-        int d=findAns(grid,n,m,r,c-1,visited);
+        int down=findAns(grid,n,m,r+1,c,visited);
+        int right=findAns(grid,n,m,r,c+1,visited);
+        int up=findAns(grid,n,m,r-1,c,visited);
+        int left=findAns(grid,n,m,r,c-1,visited);
         visited[r][c]=0;
-        return grid[r][c]+max({a,b,cc,d});
+        return grid[r][c]+max({down,right,up,left});
     }
     int getMaximumGold(vector<vector<int>>& grid) {
         int n=grid.size();
