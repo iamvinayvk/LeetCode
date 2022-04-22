@@ -4,12 +4,15 @@ public:
         if(r>=n||c>=m||r<0||c<0||visited[r][c]==1||grid[r][c]==0){
             return 0;
         }
-        visited[r][c]=1;
+        // visited[r][c]=1;
+        int storeGrid=grid[r][c];
+        grid[r][c]=0;
         int down=findAns(grid,n,m,r+1,c,visited);
         int right=findAns(grid,n,m,r,c+1,visited);
         int up=findAns(grid,n,m,r-1,c,visited);
         int left=findAns(grid,n,m,r,c-1,visited);
-        visited[r][c]=0;
+        // visited[r][c]=0;
+        grid[r][c]=storeGrid;
         return grid[r][c]+max({down,right,up,left});
     }
     int getMaximumGold(vector<vector<int>>& grid) {
