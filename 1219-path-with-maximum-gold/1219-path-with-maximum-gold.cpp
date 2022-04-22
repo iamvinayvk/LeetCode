@@ -15,12 +15,13 @@ public:
     int getMaximumGold(vector<vector<int>>& grid) {
         int n=grid.size();
         int m=grid[0].size();
+                            vector<vector<int>> visited(n,vector<int>(m,0));
+
         int ans=0;
         for(int i=0;i<n;i++){
             for(int j=0;j<m;j++){
                 if(grid[i][j]>0)
                 {
-                    vector<vector<int>> visited(n,vector<int>(m,0));
                     ans=max(findAns(grid,n,m,i,j,visited),ans);    
                 }
                 
