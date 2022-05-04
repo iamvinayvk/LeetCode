@@ -1,23 +1,19 @@
 class Solution {
 public:
     int maxOperations(vector<int>& nums, int k) {
-        sort(nums.begin(),nums.end());
-        int left=0,right=nums.size()-1;
+        //Two Sum Approach 
+        unordered_map<int,int> fre;
         int ans=0;
-        while(left<right){
-            int sum=nums[left]+nums[right];
-            if(sum==k){
-                left++,right--;
+        for(int i=0;i<nums.size();i++){
+            int secondNumber=k-nums[i];
+            if(fre[secondNumber]>0){
                 ans++;
-            }
-            else if(sum>k){
-                right--;
+                fre[secondNumber]--;
             }
             else{
-                left++;
+                fre[nums[i]]++;
             }
         }
         return ans;
-        
     }
 };
