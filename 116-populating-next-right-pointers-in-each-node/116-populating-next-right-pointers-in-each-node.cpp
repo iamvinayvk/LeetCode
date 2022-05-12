@@ -27,25 +27,29 @@ public:
         int level=1;
         while(!q.empty()){
             // level=level*2;
-            vector<Node*> levelNode;
+            
+            // vector<Node*> levelNode;
+            Node* rightNode=NULL;
             for(int i=0;i<level;i++){
                 Node* curr=q.front();
                 q.pop();
-                levelNode.push_back(curr);
+                // levelNode.push_back(curr);
+                curr->next=rightNode;
+                rightNode=curr;
                 
-                if(curr->left!=NULL){
-                    q.push(curr->left);
-                }
                 if(curr->right){
                     q.push(curr->right);
+                }
+                if(curr->left!=NULL){
+                    q.push(curr->left);
                 }
                 // q.pop();
             }
             // storeBFS.push_back(levelNode);
-            for(int i=0;i<levelNode.size()-1;i++){
-                levelNode[i]->next=levelNode[i+1];
-            }
-            levelNode[levelNode.size()-1]->next=NULL;
+            // for(int i=0;i<levelNode.size()-1;i++){
+            //     levelNode[i]->next=levelNode[i+1];
+            // }
+            // levelNode[levelNode.size()-1]->next=NULL;
             level=level*2;
         }
         return root;
