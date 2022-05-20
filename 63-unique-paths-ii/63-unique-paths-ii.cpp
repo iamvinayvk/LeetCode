@@ -17,21 +17,21 @@ public:
         if(dp[i][j]!=-1){
             return dp[i][j];
         }
-        int right,down;
-        if(dp[i+1][j]!=-1){
-            down=dp[i+1][j];
-        }
-        else{
-            down=numberofPaths(obstacleGrid,i+1,j,n,m,dp);
-        }
-         if(dp[i][j+1]!=-1){
-            right=dp[i][j+1];
-        }
-        else{
-            right=numberofPaths(obstacleGrid,i,j+1,n,m,dp);
-        }
-        // return numberofPaths(obstacleGrid,i+1,j,n,m)+numberofPaths(obstacleGrid,i,j+1,n,m);
-        return dp[i][j]=down+right;
+        // int right,down;
+        // if(dp[i+1][j]!=-1){
+        //     down=dp[i+1][j];
+        // }
+        // else{
+        //     down=numberofPaths(obstacleGrid,i+1,j,n,m,dp);
+        // }
+        //  if(dp[i][j+1]!=-1){
+        //     right=dp[i][j+1];
+        // }
+        // else{
+        //     right=numberofPaths(obstacleGrid,i,j+1,n,m,dp);
+        // }
+        return dp[i][j]=numberofPaths(obstacleGrid,i+1,j,n,m,dp)+numberofPaths(obstacleGrid,i,j+1,n,m,dp);
+        // return dp[i][j]=down+right;
         
 
         
