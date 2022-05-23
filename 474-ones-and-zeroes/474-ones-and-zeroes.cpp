@@ -3,7 +3,7 @@ public:
     int knapSack(vector<string>& strs,int m,int n,int index,map<string,vector<int>>& store,vector<vector<vector<int>>>& dp){
         //basecase
        
-        if(index==-1||(m==0 and n==0)){
+        if(index==-1||(m<=0 && n<=0)){
          
             return 0;
         }
