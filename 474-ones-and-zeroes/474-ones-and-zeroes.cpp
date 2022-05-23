@@ -24,10 +24,11 @@ public:
         int take=INT_MIN;
         if(dp[m][n][index]!=-1)
             return dp[m][n][index];
-        if(m<zero||n<one)
-        {
-            return dp[m][n][index]=knapSack(strs,m,n,index-1,store,dp);
-        }
+        // if(m<zero||n<one)
+        // {
+        //     return dp[m][n][index]=knapSack(strs,m,n,index-1,store,dp);
+        // }
+        if(m>=zero&&n>=one)
         take=1+knapSack(strs,m-zero,n-one,index-1,store,dp);
         int notTake=knapSack(strs,m,n,index-1,store,dp);
         // cout<<"take: "<<take<<" "<<"notTake: "<<notTake<<" "<<index<<" "<<m<<" "<<n<<"\n";              
