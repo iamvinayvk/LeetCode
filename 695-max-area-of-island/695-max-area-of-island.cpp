@@ -1,41 +1,39 @@
 class Solution {
 public:
-    bool isValid(vector<vector<int>>& grid,int i,int j,int n,int m){
-         if(i<0||j<0||i>=m||j>=n||grid[i][j]==0)
-            return false;
-        return true;
-    }
+    // bool isValid(vector<vector<int>>& grid,int i,int j,int n,int m){
+    //      if(i<0||j<0||i>=m||j>=n||grid[i][j]==0)
+    //         return false;
+    //     return true;
+    // }
     void dfs(vector<vector<int>>& grid,int i,int j,int n,int m,int& ans){
+       if(i<0||j<0||i>=m||j>=n||grid[i][j]==0)
+        return;
        
         ans+=1;
         grid[i][j]=0;
-        if(isValid(grid,i+1,j,n,m))
-        {
-            dfs(grid,i+1,j,n,m,ans);
-            // cout<<"i+1 "<<i+1<<" j "<<j<<"\n";
-        }
         
-        if(isValid(grid,i-1,j,n,m))
-        {
+            dfs(grid,i+1,j,n,m,ans);
+            cout<<"i+1 "<<i+1<<" j "<<j<<"\n";
+        
+        
+
                     dfs(grid,i-1,j,n,m,ans);
-                        // cout<<"i-1 "<<i-1<<" j "<<j<<"\n";
+                        cout<<"i-1 "<<i-1<<" j "<<j<<"\n";
 
 
-        }
-        if(isValid(grid,i,j-1,n,m))
-        {
+        
+
                     dfs(grid,i,j-1,n,m,ans);
-                        // cout<<"i "<<i<<" j-1 "<<j-1<<"\n";
+                        cout<<"i "<<i<<" j-1 "<<j-1<<"\n";
 
 
-        }
-        if(isValid(grid,i,j+1,n,m))
-        {
+        
+        
                    dfs(grid,i,j+1,n,m,ans);
-                        // cout<<"i "<<i<<" j+1 "<<j+1<<"\n";
+                        cout<<"i "<<i<<" j+1 "<<j+1<<"\n";
 
  
-        }
+        
         // grid[i][j]=0;
         
     }
