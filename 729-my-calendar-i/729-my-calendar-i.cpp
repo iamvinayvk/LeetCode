@@ -1,17 +1,25 @@
 class MyCalendar {
 public:
-    set<pair<int,int>> s;
+    vector<pair<int,int>> calendar;
     MyCalendar() {
-       
+        
     }
     
     bool book(int start, int end) {
-        for(auto x:s){
-            if(x.first<end&&x.second>start)
-                return false;
+     sort(calendar.begin(),calendar.end());
+        int flag=1;
+     for(int i=0;i<calendar.size();i++){
+         if(calendar[i].first<end&&calendar[i].second>start)
+         {
+             flag=0;
+             break;
+         }
+     }   
+        if(flag){
+            calendar.push_back({start,end});
+            return true;
         }
-        s.insert({start,end});
-        return true;
+        return false;
     }
 };
 
