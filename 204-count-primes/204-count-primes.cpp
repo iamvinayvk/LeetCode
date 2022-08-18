@@ -11,7 +11,7 @@ public:
           if(!isPrime[i]){
               ans++;
             
-    for(long long  j=i*i;j<=n;j+=i){
+    for(long long  j=i*i;j<n;j+=i){
                   isPrime[j]=true;
               }
               
