@@ -10,6 +10,7 @@ public:
       for(long long i=3;i<n;i+=2){
           if(!isPrime[i]){
               ans++;
+              // cout<<i<<" ";
             
     for(long long  j=i*i;j<n;j+=i){
                   isPrime[j]=true;
