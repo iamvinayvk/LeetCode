@@ -11,9 +11,7 @@ public:
         for(auto x: mp){
             pq.push({x.second,x.first});
             size+=x.second;
-            cout<<size<<" \n";
             if(2*size>arr.size()){
-                cout<<"gaya\n";
                 size-=pq.top().first;
                 ans++;
                 pq.pop();
