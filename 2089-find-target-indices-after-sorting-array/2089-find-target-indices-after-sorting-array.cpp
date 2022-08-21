@@ -8,7 +8,7 @@ public:
             int mid=low+(high-low)/2;
             if(nums[mid]>=target){
                 high=mid;
-                cout<<high<<" :\n";
+                // cout<<high<<" :\n";
             }
             else {
                 low=mid+1;
