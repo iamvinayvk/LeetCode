@@ -1,31 +1,26 @@
 class Solution {
-private:
-    void solve(vector<int>& nums,set<vector<int>> &ans,vector<int> t){
-        if(t.size()==nums.size()){            // Base case-> if temporsry vector size becomes equal to size of given list 
-            ans.insert(t);                // Before returning store the valid permutation inside the ans
-            return ;
+public:
+    void solve(vector<int>& nums,set<vector<int>>& s,vector<int> temp){
+        if(temp.size()==nums.size()){
+            s.insert(temp);
         }
-        
         for(int i=0;i<nums.size();i++){
-            if(nums[i]!=11){            // check if the element is already included
+            if(nums[i]!=11){
                 int j=nums[i];
-                nums[i]=11;        // make the current ele to 11 (which is out of the range) so that we will not insert this element in next call
-                t.push_back(j);      // store it in the temporary vector
-                solve(nums,ans,t);  //recursively call to complete the permutations
-                nums[i]=j;      // backtrack 
-                t.pop_back();
+                nums[i]=11;
+                temp.push_back(j);
+                solve(nums,s,temp);
+                nums[i]=j;
+                temp.pop_back();
             }
         }
     }
-public:
     vector<vector<int>> permuteUnique(vector<int>& nums) {
-        set<vector<int>> s;          //to store unique permutations
+        set<vector<int>> s;
         vector<vector<int>> ans;
-        
         solve(nums,s,{});
-        
-        for(auto i:s){
-            ans.push_back(i);
+        for(auto x:s){
+            ans.push_back(x);
         }
         return ans;
     }
