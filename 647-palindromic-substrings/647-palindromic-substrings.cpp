@@ -1,36 +1,25 @@
 class Solution {
 public:
+    int isPalindrome(string s,int i,int j,vector<vector<int>>& dp){
+        if(dp[i][j]!=-1)
+            return dp[i][j];
+        int st=i,e=j;
+        while(st<e){
+            if(s[st++]!=s[e--])
+                return dp[i][j]=false;
+        }
+        return dp[i][j]=true;
+        
+    }
     int countSubstrings(string s) {
         int n=s.size();
-        int res=0;
-        vector<vector<int>> dp(n+2,vector<int>(n+2,-1));
+        int ans=0;
+        vector<vector<int>> dp(n+1,vector<int>(n+1,-1));
         for(int i=0;i<n;i++){
-            dp[i][i]=1;
-            res++;
-        }
-        for(int i=n-1;i>=0;i--){
-            for(int j=i+1;j<n;j++){
-                if(i+1==j){
-                    if(s[i]==s[j]){
-                        dp[i][j]=1;
-                        res++;
-                    }
-                    else{
-                        dp[i][j]=0;
-                    }
-                }
-                else{
-                    if(s[i]==s[j]&&dp[i+1][j-1]==1){
-                        dp[i][j]=1;
-                        res++;
-                    }
-                    else{
-                        dp[i][j]=0;
-                    }
-                }
+            for(int j=i;j<n;j++){
+                ans+=(isPalindrome(s,i,j,dp));
             }
         }
-        return res;
-        
+        return ans;
     }
 };
