@@ -11,23 +11,21 @@
  */
 class Solution {
 public:
-    int solve(TreeNode* root,int maxi,int mini){
+    pair<int,int> solve(TreeNode* root,int& ans){
         if(root==NULL)
-            return abs(maxi-mini);
-        maxi=max(maxi,root->val);
-        mini=min(mini,root->val);
-        int left=solve(root->left,maxi,mini);
-        int right=solve(root->right,maxi,mini);
-        return max(left,right);
+            return {INT_MAX,INT_MIN};
+        auto [left_min,left_max]=solve(root->left,ans);
+        auto [right_min,right_max]=solve(root->right,ans);
+        int curr_min=min({root->val,left_min,right_min});
+        int curr_max=max({root->val,left_max,right_max});
+        ans=max({ans,root->val-curr_min,curr_max-root->val});
+        return {curr_min,curr_max};
         
         
     }
     int maxAncestorDiff(TreeNode* root) {
-        
-        if(root==NULL)
-            return 0;
-        int mini=root->val;
-        int maxi=root->val;
-        return solve(root,maxi,mini);
+        int ans=INT_MIN;
+        solve(root,ans);
+        return ans;
     }
 };
