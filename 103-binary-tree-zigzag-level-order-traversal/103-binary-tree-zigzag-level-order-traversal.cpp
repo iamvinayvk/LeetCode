@@ -38,8 +38,9 @@ public:
             }
             if(upward)
                     reverse(temp.begin(),temp.end());
+            upward^=1;
             ans.push_back(temp);
-            upward=upward?false:true;
+            
             
         }
         return ans;
