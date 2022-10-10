@@ -18,7 +18,7 @@ public:
            if(palindrome[i]!='a'){
                char temp=palindrome[i];
                palindrome[i]='a';
-               if(isPalindrome(palindrome)==false)
+               if(palindrome.size()%2==0||(palindrome.size()%2&&i!=palindrome.size()/2))
                return palindrome;
                palindrome[i]=temp;
            } 
