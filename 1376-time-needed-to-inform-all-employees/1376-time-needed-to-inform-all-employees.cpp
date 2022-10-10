@@ -10,18 +10,18 @@ public:
         }
         queue<int> q;
         q.push(headID);
+        int ans=0;
         while(!q.empty()){
             int curr=q.front();
             q.pop();
+            ans=max(ans,informTime[curr]);
             for(auto child:graph[curr]){
                 informTime[child]+=informTime[curr];
                 q.push(child);
             }
         }
-        int ans=0;
-        for(auto x:informTime){
-            ans=max(x,ans);
-        }
+        
+        
         return ans;
     }
 };
